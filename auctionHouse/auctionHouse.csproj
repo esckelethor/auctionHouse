@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="listaPersonalizada">
+      <HintPath>..\..\listaPersonalizada\listaPersonalizada\bin\Debug\listaPersonalizada.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,14 +64,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AuctionHouse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AuctionHouse.Designer.cs">
+      <DependentUpon>AuctionHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clases\UndoRedo.cs" />
+    <Compile Include="clases\Item.cs" />
+    <Compile Include="clases\Operaciones.cs" />
+    <Compile Include="drawable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>drawable.resx</DependentUpon>
+    </Compile>
+    <Compile Include="drawableGrade.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>drawableGrade.resx</DependentUpon>
+    </Compile>
+    <Compile Include="drawableItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>drawableItems.resx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AuctionHouse.es-ES.resx">
+      <DependentUpon>AuctionHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuctionHouse.resx">
+      <DependentUpon>AuctionHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="drawable.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>drawable.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="drawableGrade.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>drawableGrade.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="drawableItems.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>drawableItems.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +129,615 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arcaneOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arcaneOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\basicOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\basicOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\celestialOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\celestialOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crudeOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crudeOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grandOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grandOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heroicOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heroicOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rareOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rareOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uniqueOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uniqueOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\divineOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\divineOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\epicOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\epicOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendaryOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendaryOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mythicOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mythicOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forgotten_rhythm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\illustrious_earth_earring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\illustrious_flame_earring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shroudmaster_earring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apprentice%27s_flame_necklace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\conqueror%27s_wave_necklace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\craftsman%27s_life_necklace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glowing_sealed_illustrious_necklace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\craftsman%27s_wave_ring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\harbinger%27s_ring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\illustrious_earth_ring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnificent_gale_ring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aria_of_archery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enchanting_scroll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\epherium_tidal_lute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tempting_illusion_lute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fantasia_of_sorcery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\frozen_snowflower_pipe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lost_garden_faded_flute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wayfaring_jester.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aaEn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aaEs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ayanad_life_dagger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crystal_icicle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_mountain_dagger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sacrificial_desire.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ayanad_life_sword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deep_blue_sea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glowing_sealed_magnificent_sword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hellkissed_sword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ayanad_gale_katana.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dirgebringer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fallen_moon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\survivor_butcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_tidal_bow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fugitive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hellkissed_bow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ruler%27s_bow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anticipation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\homecoming_shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jola%27s_eternal_grudge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maliceforged_shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bird_of_prey_cloak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloak_of_unbinding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dream_hunter%27s_cloak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sage%27s_cloak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crused_obsidian_shortspear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\epherium_wave_shortspear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fangbane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hungry_snake%27s_fang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ayanad_gale_axe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crused_obsidian_axe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lost_garden_faded_axe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sealed_ayanad_axe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apprentice%27s_meadow_scepter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blind_fate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diviner%27s_dream.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\honor%27s_mighty_vivacious_scepter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buffalo_bone_mace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_life_club.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merciful_sunset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scrap_dealer%27s_truncheon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dragonroar_nodachi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\epherium_sky_nodachi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hellkissed_nodachi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\honor%27s_mighty_frenzied_nodachi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\archerfish_greatsword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fir_queen%27s_tears.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hellkissed_greatsword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kingsbane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\artificer%27s_squall_longspear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glowing_sealed_epherium_longspear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rekas%27s_longspear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sea_god%27s_wrath.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bone-carved_pain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\festering_amputator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\honor%27s_mighty_silent_greataxe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shock_and_awe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crused_obsidian_greatclub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\embalmer%27s_weeping.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\matronfist_greatclub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nui%27s_devotion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\berserk_red_dragon_roar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eternal_prophet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lidless_rage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maliceforged_staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corrupted_kyrios_shirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glenn%27s_admiral_jacket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maliceforged_shirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skybright_shirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corrupted_kyrios_shoes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\epherium_ocean_shoes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glenn%27s_boots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skybright_shoes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corrupted_kyrios_gloves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\epherium_ocean_gloves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glenn%27s_gloves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skybringht_gloves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corrupted_kyrios_hood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maliceforged_hood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\morpheus_mask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skybright_hood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corrupted_kyrios_pants.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\epherium_ocean_pants.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glenn%27s_pants.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skybright_pants.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corrupted_kyrios_sash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glenn%27s_sash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jester_king%27s_sash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skybright_sash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corrupted_kyrios_sleeves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glenn%27s_sleeves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jester_king%27s_sleeves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skybright_sleeves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auroira_beldame_jerkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursed_obsidian_jerkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dawnsdrop_jerkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jaya%27s_jerkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auroria_beldame_boots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursed_obsidian_boots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dawnsdrop_boots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jaya%27s_boots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auroria_beldame_fists.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursed_obsidian_fists.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dawnsdrop_fists.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jaya%27s_fists.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auroria_beldame_cap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursed_obsidian_cap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dawnsdrop_cap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jaya%27s_cap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auroria_beldame_breeches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursed_obsidian_breeches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dawnsdrop_breeches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jaya%27s_breeches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auroria_beldame_belt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dawnsdrop_belt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\high_inquisitor%27s_belt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jaya%27s_belt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auroria_beldame_guards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dawnsdrop_guards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jaya%27s_guards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnificent_squall_guards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\annihilator%27s_cuirass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ardent_oath_cuirass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_desert_cuirass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hexbane_cuirass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\annihilator%27s_sabatons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ardent_oath_sabatons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_desert_sabatons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hexbane_sabatons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\annihilator%27s_gauntlets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ardent_oath_gauntlets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_desert_gauntlets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hexbane_gauntlets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\annihilator%27s_helm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ardent_oath_helm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_desert_helm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hexbane_helm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\annihilator%27s_greaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ardent_oath_greaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_desert_greaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hexbane_greaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ardent_oath_tassets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_desert_tassets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hexbane_tassets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yaksa_general%27s_tassets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ardent_oath_vambraces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delphinad_desert_vambraces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hexbane_vambraces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yaksa_general%27s_vambraces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coinpurse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redoOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redoOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undoOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undoOn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
